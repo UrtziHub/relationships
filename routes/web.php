@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\ApiController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UserController;
@@ -45,3 +46,7 @@ Route::get('/address/asign',[AddressController::class, 'asign'])->name('address.
 
 Route::resource('posts',PostController::class);
 Route::resource('subjects',SubjectController::class);
+
+//Si estan ordenados del reves no funciona el recent, intenta buscar un usuarion con "recent"
+Route::get('/api/posts/recent', [ApiController::class, 'getRecentPosts']);
+Route::get('/api/posts/{user_id}', [ApiController::class, 'getUserPosts']);
